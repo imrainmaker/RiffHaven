@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[Guitar] (
+    [Id_Guitar]  INT IDENTITY (1, 1) NOT NULL,
+    [Id_Tremolo] INT NULL,
+    [Id_Pickups] INT NOT NULL,
+    [Id_Scales]  INT NOT NULL,
+    [Id_Frets]   INT NOT NULL,
+    [Id_Colors]  INT NOT NULL,
+    [Id_Styles]  INT NOT NULL,
+    [Id_Brands]  INT NOT NULL,
+    [Body]       INT NOT NULL,
+    [Neck]       INT NOT NULL,
+    [Top]        INT NOT NULL,
+    [Fretboards] INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id_Guitar] ASC),
+    FOREIGN KEY ([Body]) REFERENCES [dbo].[Woods] ([Id_Woods]),
+    FOREIGN KEY ([Fretboards]) REFERENCES [dbo].[Woods] ([Id_Woods]),
+    FOREIGN KEY ([Id_Brands]) REFERENCES [dbo].[Brands] ([Id_Brands]),
+    FOREIGN KEY ([Id_Colors]) REFERENCES [dbo].[Colors] ([Id_Colors]),
+    FOREIGN KEY ([Id_Frets]) REFERENCES [dbo].[Frets] ([Id_Frets]),
+    FOREIGN KEY ([Id_Pickups]) REFERENCES [dbo].[Pickups] ([Id_Pickups]),
+    FOREIGN KEY ([Id_Scales]) REFERENCES [dbo].[Scales] ([Id_Scales]),
+    FOREIGN KEY ([Id_Styles]) REFERENCES [dbo].[Styles] ([Id_Styles]),
+    FOREIGN KEY ([Id_Tremolo]) REFERENCES [dbo].[Tremolo] ([Id_Tremolo]),
+    FOREIGN KEY ([Neck]) REFERENCES [dbo].[Woods] ([Id_Woods]),
+    FOREIGN KEY ([Top]) REFERENCES [dbo].[Woods] ([Id_Woods])
+);
+
