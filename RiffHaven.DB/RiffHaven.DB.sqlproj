@@ -85,5 +85,6 @@
     <Build Include="dbo\Views\OrdersView.sql" />
     <Build Include="dbo\Stored Procedures\Connexion.sql" />
     <Build Include="dbo\Stored Procedures\NewUser.sql" />
+    <Build Include="dbo\Stored Procedures\AddGuitar.sql" />
   </ItemGroup>
 </Project>
