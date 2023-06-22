@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using RiffHaven.API.Dtos;
+using RiffHaven.API.Mappers;
 using RiffHaven.BLL.Interfaces;
-using RiffHaven.Domain.Entities;
 
 namespace RiffHaven.API.Controllers
 {
@@ -16,9 +16,9 @@ namespace RiffHaven.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddProduct(Products product)
+        public IActionResult AddProduct(NewProductDTO product)
         {
-            _service.AddProduct(product);
+            _service.AddProduct(product.ToProduct());
             return Ok();
         }
     }

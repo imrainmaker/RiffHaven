@@ -51,53 +51,46 @@ BEGIN
 		VALUES (@Frets)
 	END
 
-		-- Ajout Tremolo --
-	IF NOT EXISTS (SELECT 1 FROM Tremolo WHERE Tremolo = @Tremolo)
+		-- Ajout Color --
+	IF NOT EXISTS (SELECT 1 FROM Colors WHERE Color = @Color)
 	BEGIN
-		INSERT INTO Tremolo (Tremolo)
-		VALUES (@Tremolo)
+		INSERT INTO Colors(Color)
+		VALUES (@Color)
 	END
 
-		-- Ajout Tremolo --
-	IF NOT EXISTS (SELECT 1 FROM Tremolo WHERE Tremolo = @Tremolo)
+		-- Ajout Style --
+	IF NOT EXISTS (SELECT 1 FROM Styles WHERE Style = @Style)
 	BEGIN
-		INSERT INTO Tremolo (Tremolo)
-		VALUES (@Tremolo)
+		INSERT INTO Styles (Style)
+		VALUES (@Style)
 	END
 
-		-- Ajout Tremolo --
-	IF NOT EXISTS (SELECT 1 FROM Tremolo WHERE Tremolo = @Tremolo)
+		-- Ajout Wood --
+	IF NOT EXISTS (SELECT 1 FROM Woods WHERE wood = @BodyWood)
 	BEGIN
-		INSERT INTO Tremolo (Tremolo)
-		VALUES (@Tremolo)
+		INSERT INTO Woods (wood)
+		VALUES (@BodyWood)
 	END
 
-		-- Ajout Tremolo --
-	IF NOT EXISTS (SELECT 1 FROM Tremolo WHERE Tremolo = @Tremolo)
+		-- Ajout Wood --
+	IF NOT EXISTS (SELECT 1 FROM Woods WHERE wood = @TopWood)
 	BEGIN
-		INSERT INTO Tremolo (Tremolo)
-		VALUES (@Tremolo)
+		INSERT INTO Woods (wood)
+		VALUES (@TopWood)
 	END
 
-		-- Ajout Tremolo --
-	IF NOT EXISTS (SELECT 1 FROM Tremolo WHERE Tremolo = @Tremolo)
+		-- Ajout Wood --
+	IF NOT EXISTS (SELECT 1 FROM Woods WHERE wood = @NeckWood)
 	BEGIN
-		INSERT INTO Tremolo (Tremolo)
-		VALUES (@Tremolo)
+		INSERT INTO Woods (wood)
+		VALUES (@NeckWood)
 	END
 
-		-- Ajout Tremolo --
-	IF NOT EXISTS (SELECT 1 FROM Tremolo WHERE Tremolo = @Tremolo)
+		-- Ajout Wood --
+	IF NOT EXISTS (SELECT 1 FROM Woods WHERE wood = @FretboardWood)
 	BEGIN
-		INSERT INTO Tremolo (Tremolo)
-		VALUES (@Tremolo)
-	END
-
-		-- Ajout Tremolo --
-	IF NOT EXISTS (SELECT 1 FROM Tremolo WHERE Tremolo = @Tremolo)
-	BEGIN
-		INSERT INTO Tremolo (Tremolo)
-		VALUES (@Tremolo)
+		INSERT INTO Woods (wood)
+		VALUES (@FretboardWood)
 	END
 
 END
