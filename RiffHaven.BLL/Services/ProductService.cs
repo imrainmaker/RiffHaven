@@ -22,5 +22,11 @@ namespace RiffHaven.BLL.Services
         {
             _service.AddProduct(product);
         }
+
+        public GuitarParts GetParts()
+        {
+            GuitarParts parts = _service.GetParts();
+            return parts;
+        }
     }
 }

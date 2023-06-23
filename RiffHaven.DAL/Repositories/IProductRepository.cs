@@ -10,5 +10,6 @@ namespace RiffHaven.DAL.Repositories
     public interface IProductRepository
     {
         public void AddProduct(Products product);
+        public GuitarParts GetParts();
     }
 }

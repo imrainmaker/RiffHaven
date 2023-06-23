@@ -2,6 +2,7 @@
 using RiffHaven.API.Dtos;
 using RiffHaven.API.Mappers;
 using RiffHaven.BLL.Interfaces;
+using RiffHaven.Domain.Entities;
 
 namespace RiffHaven.API.Controllers
 {
@@ -20,6 +21,13 @@ namespace RiffHaven.API.Controllers
         {
             _service.AddProduct(product.ToProduct());
             return Ok();
+        }
+
+        [HttpGet]
+        public IActionResult GetParts() 
+        {
+            GuitarParts parts = _service.GetParts();
+            return Ok(parts); 
         }
     }
 }
