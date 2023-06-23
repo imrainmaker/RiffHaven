@@ -16,9 +16,9 @@ namespace RiffHaven.DAL.Services
 
         public void AddProduct(Products product)
         {
-            string sql = "EXEC AddGuitar @Model, @Description, @Stock, @Price, @Tremolo, @Pickup, @Scale," +
+            string sql = "EXEC AddGuitar @Model, @Description, @Stock, @Price, @Brands, @Tremolo, @Pickup, @Scale," +
                          " @Frets, @Color, @Style, @Brand, @BodyWood, @NeckWood, @TopWood, @FretboardWood";
-            _connection.Execute(sql);
+            _connection.Execute(sql, product);
         }
     }
 }

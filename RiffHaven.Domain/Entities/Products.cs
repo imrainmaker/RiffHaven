@@ -13,7 +13,11 @@ namespace RiffHaven.Domain.Entities
         public string Description { get; set; }
         public int Stock { get; set; }
         public decimal Price { get; set; }
+
+
         public int Id_Guitar { get; set; }
+
+
         public string? Tremolo { get; set; }
         public string Pickup { get; set; }
         public int Scale { get; set; }
