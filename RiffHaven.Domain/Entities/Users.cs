@@ -18,5 +18,6 @@ namespace RiffHaven.Domain.Entities
         public string Box { get; set; }
         public int Zip { get; set; }
         public string City { get; set; }
+        
     }
 }

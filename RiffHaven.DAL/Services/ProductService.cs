@@ -21,6 +21,16 @@ namespace RiffHaven.DAL.Services
             _connection.Execute(sql, product);
         }
 
+        public bool DeleteProduct(int id)
+        {
+            var parameters = new { Id = id };
+            string sql = "EXEC DeleteProduct @id";
+
+            int result = _connection.Execute(sql, parameters); 
+            return result == 2 ? true : false;
+
+        }
+
         public GuitarParts GetParts()
         {
             GuitarParts parts = new GuitarParts();
@@ -59,6 +69,37 @@ namespace RiffHaven.DAL.Services
 
             return parts;
 
+        }
+
+        public Products GetProductById(int id)
+        {
+            var parameters = new { Id = id};
+            string sql = "SELECT * FROM ProductsView WHERE Id_Products = @id";
+            return _connection.QueryFirst<Products>(sql, parameters);
+        }
+
+        public List<Products> GetProducts()
+        {
+            string sql = "SELECT * FROM ProductsView";
+            List<Products> products = _connection.Query<Products>(sql).ToList(); 
+            return products;
+        }
+
+        public Products UpdateProduct(int id, Products productToUpdate)
+        {
+            var parameters = new
+            {
+                Id = id,
+                Model = productToUpdate.Model,
+                Description = productToUpdate.Description,
+                Stock = productToUpdate.Stock,
+                Price = productToUpdate.Price
+            };
+
+            string sql = "UPDATE Products SET Model = @Model, Description = @Description, Stock = @Stock, Price = @Price WHERE Id_Products = @Id";
+            _connection.Execute(sql, parameters);
+
+            return productToUpdate;
         }
     }
 }

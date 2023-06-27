@@ -11,5 +11,9 @@ namespace RiffHaven.DAL.Repositories
     {
         public void AddProduct(Products product);
         public GuitarParts GetParts();
+        public List<Products> GetProducts();
+        public Products GetProductById(int id);
+        public bool DeleteProduct(int id);
+        public Products UpdateProduct(int id, Products productToUpdate);
     }
 }

@@ -2,6 +2,7 @@
 using RiffHaven.API.Dtos;
 using RiffHaven.API.Mappers;
 using RiffHaven.BLL.Interfaces;
+using RiffHaven.Domain.Dtos;
 using RiffHaven.Domain.Entities;
 
 namespace RiffHaven.API.Controllers
@@ -23,11 +24,40 @@ namespace RiffHaven.API.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("Detail")]
         public IActionResult GetParts() 
         {
             GuitarParts parts = _service.GetParts();
             return Ok(parts); 
+        }
+
+        [HttpGet]
+
+        public IActionResult GetProducts() {
+            List<Products> products = _service.GetProducts();
+            return Ok(products);
+        }
+
+        [HttpGet("{id}")]
+
+        public IActionResult GetProductById(int id)
+        {
+            Products product = _service.GetProductById(id);
+            return Ok(product);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteProduct(int id)
+        {
+            bool delete = _service.DeleteProduct(id);
+            return Ok(delete);
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult UpdateProduct(int id, UpdateProductDTO product)
+        {
+            Products productUpdated = _service.UpdateProduct(id, product);
+            return Ok(productUpdated);
         }
     }
 }
