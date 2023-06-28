@@ -101,5 +101,30 @@ namespace RiffHaven.DAL.Services
 
             return productToUpdate;
         }
+
+        public Products UpdateGuitar(int id, Products guitarToUpdate)
+        {
+            var parameters = new
+            {
+                Id_Guitar = id,
+                Brand = guitarToUpdate.Brand,
+                Style = guitarToUpdate.Style,
+                Color = guitarToUpdate.Color,
+                Pickup = guitarToUpdate.Pickup,
+                Scale = guitarToUpdate.Scale,
+                Frets = guitarToUpdate.Frets,
+                Tremolo = guitarToUpdate.Tremolo,
+                BodyWood = guitarToUpdate.BodyWood,
+                NeckWood = guitarToUpdate.NeckWood,
+                TopWood = guitarToUpdate.TopWood,
+                FretboardWood = guitarToUpdate.FretboardWood
+            };
+
+            string sql = "EXEC UpdateGuitar @Id_Guitar, @Tremolo, @Pickup, @Scale, @Frets, @Color, @Style, @Brand, " +
+                         "@BodyWood, @NeckWood, @TopWood, @FretboardWood";
+            Products guitarUpdated= _connection.QueryFirst<Products>(sql, parameters);
+
+            return guitarUpdated is not null ? guitarUpdated : null;
+        }
     }
 }

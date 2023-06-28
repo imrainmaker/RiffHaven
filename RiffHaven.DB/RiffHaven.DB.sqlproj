@@ -87,5 +87,6 @@
     <Build Include="dbo\Stored Procedures\NewUser.sql" />
     <Build Include="dbo\Stored Procedures\AddGuitar.sql" />
     <Build Include="dbo\Stored Procedures\DeleteProduct.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateGuitar.sql" />
   </ItemGroup>
 </Project>

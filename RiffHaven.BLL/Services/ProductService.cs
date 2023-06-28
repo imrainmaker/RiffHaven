@@ -57,12 +57,46 @@ namespace RiffHaven.BLL.Services
                 productToUpdate.Stock = product.Stock;
                 productToUpdate.Price = product.Price;
 
-                _service.UpdateProduct(id, productToUpdate);
+                Products productUpdated = _service.UpdateProduct(id, productToUpdate);
 
+                return productUpdated is not null ? productUpdated : null;
             }
 
-            return productToUpdate is not null ? productToUpdate : null;
+            return null;
 
+
+        }
+
+
+        public Products UpdateGuitar(int id, UpdateGuitarDTO product)
+        {
+            Products guitarToUpdate = _service.GetProductById(id);
+            if (guitarToUpdate is not null)
+            {
+                //Modification de l'id pour atteindre la guitar depuis une page produit
+                // Id_Produit != Id_Guitar
+                id = guitarToUpdate.Id_Guitar;
+                
+                guitarToUpdate.Brand = product.Brand;
+                guitarToUpdate.Style = product.Style;
+                guitarToUpdate.Color = product.Color;
+                guitarToUpdate.Pickup = product.Pickup;
+                guitarToUpdate.Scale = product.Scale;
+                guitarToUpdate.Frets = product.Frets;
+                guitarToUpdate.Tremolo = product.Tremolo;
+                guitarToUpdate.BodyWood = product.BodyWood;
+                guitarToUpdate.NeckWood = product.NeckWood;
+                guitarToUpdate.TopWood = product.TopWood;
+                guitarToUpdate.FretboardWood = product.FretboardWood;
+
+
+
+                Products guitarUpdated = _service.UpdateGuitar(id, guitarToUpdate);
+
+                return guitarUpdated is not null ? guitarUpdated : null;
+            }
+
+            return null;
         }
     }
 }

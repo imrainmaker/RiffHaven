@@ -121,7 +121,7 @@ BEGIN
 		END
 		ELSE
 		BEGIN
-			SET @Id_Brand = (SELECT Id_Brands FROM Brands WHERE @Brand = @Brand)
+			SET @Id_Brand = (SELECT Id_Brands FROM Brands WHERE Brand = @Brand)
 		END
 
 		-- Ajout Wood --

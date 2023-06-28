@@ -59,5 +59,12 @@ namespace RiffHaven.API.Controllers
             Products productUpdated = _service.UpdateProduct(id, product);
             return Ok(productUpdated);
         }
+
+        [HttpPatch("Detail/{id}")]
+        public IActionResult UpdateGuitar(int id, UpdateGuitarDTO product)
+        {
+            Products productUpdated = _service.UpdateGuitar(id, product);
+            return Ok(productUpdated);
+        }
     }
 }
