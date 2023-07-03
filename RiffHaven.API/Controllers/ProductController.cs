@@ -20,6 +20,10 @@ namespace RiffHaven.API.Controllers
         [HttpPost]
         public IActionResult AddProduct(NewProductDTO product)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             _service.AddProduct(product.ToProduct());
             return Ok();
         }
@@ -42,8 +46,8 @@ namespace RiffHaven.API.Controllers
 
         public IActionResult GetProductById(int id)
         {
-            Products product = _service.GetProductById(id);
-            return Ok(product);
+            Products? product = _service.GetProductById(id);
+            return product is not null ? Ok(product) : BadRequest();
         }
 
         [HttpDelete("{id}")]
@@ -56,15 +60,23 @@ namespace RiffHaven.API.Controllers
         [HttpPatch("{id}")]
         public IActionResult UpdateProduct(int id, UpdateProductDTO product)
         {
-            Products productUpdated = _service.UpdateProduct(id, product);
-            return Ok(productUpdated);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            Products? productUpdated = _service.UpdateProduct(id, product);
+            return product is not null ? Ok(productUpdated) : BadRequest();
         }
 
         [HttpPatch("Detail/{id}")]
         public IActionResult UpdateGuitar(int id, UpdateGuitarDTO product)
         {
-            Products productUpdated = _service.UpdateGuitar(id, product);
-            return Ok(productUpdated);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            Products? productUpdated = _service.UpdateGuitar(id, product);
+            return product is not null ? Ok(productUpdated) : BadRequest();
         }
     }
 }

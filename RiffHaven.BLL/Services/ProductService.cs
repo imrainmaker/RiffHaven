@@ -19,25 +19,34 @@ namespace RiffHaven.BLL.Services
             _service = service;
         }
 
-        public void AddProduct(Products product)
+        public bool AddProduct(Products product)
         {
-            _service.AddProduct(product);
+            int? idGuitar = _service.AddProduct(product);
+            Directory.CreateDirectory($@"..\..\RiffHavenAngular\src\assets\Guitars\Guitar{idGuitar}");
+            return idGuitar is not null ? true : false;
         }
 
         public bool DeleteProduct(int id)
         {
-            return _service.DeleteProduct(id);
+            int? idGuitar = _service.DeleteProduct(id);
+            string path = $@"..\..\RiffHavenAngular\src\assets\Guitars\Guitar{idGuitar}";
+            if (Directory.Exists(path))
+            {
+                Directory.Delete(path, true);
+            }
+
+            return idGuitar is not null ? true : false;
         }
 
-        public GuitarParts GetParts()
+        public GuitarParts? GetParts()
         {
-            GuitarParts parts = _service.GetParts();
+            GuitarParts? parts = _service.GetParts();
             return parts;
         }
 
-        public Products GetProductById(int id)
+        public Products? GetProductById(int id)
         {
-            Products product = _service.GetProductById(id);
+            Products? product = _service.GetProductById(id);
             return product;
         }
 
@@ -47,9 +56,9 @@ namespace RiffHaven.BLL.Services
             return products;
         }
 
-        public Products UpdateProduct(int id, UpdateProductDTO product)
+        public Products? UpdateProduct(int id, UpdateProductDTO product)
         {
-            Products productToUpdate = _service.GetProductById(id);
+            Products? productToUpdate = _service.GetProductById(id);
             if(productToUpdate is not null)
             {
                 productToUpdate.Model = product.Model;
@@ -57,9 +66,9 @@ namespace RiffHaven.BLL.Services
                 productToUpdate.Stock = product.Stock;
                 productToUpdate.Price = product.Price;
 
-                Products productUpdated = _service.UpdateProduct(id, productToUpdate);
+                Products? productUpdated = _service.UpdateProduct(id, productToUpdate);
 
-                return productUpdated is not null ? productUpdated : null;
+                return productUpdated;
             }
 
             return null;
@@ -68,9 +77,9 @@ namespace RiffHaven.BLL.Services
         }
 
 
-        public Products UpdateGuitar(int id, UpdateGuitarDTO product)
+        public Products? UpdateGuitar(int id, UpdateGuitarDTO product)
         {
-            Products guitarToUpdate = _service.GetProductById(id);
+            Products? guitarToUpdate = _service.GetProductById(id);
             if (guitarToUpdate is not null)
             {
                 //Modification de l'id pour atteindre la guitar depuis une page produit
@@ -93,7 +102,7 @@ namespace RiffHaven.BLL.Services
 
                 Products guitarUpdated = _service.UpdateGuitar(id, guitarToUpdate);
 
-                return guitarUpdated is not null ? guitarUpdated : null;
+                return guitarUpdated;
             }
 
             return null;

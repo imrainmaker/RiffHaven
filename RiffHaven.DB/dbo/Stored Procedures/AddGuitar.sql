@@ -186,5 +186,7 @@ BEGIN
 		INSERT INTO Products (Model, Description, Stock, Price, Id_Guitar)
 		VALUES (@Model, @Description, @Stock, @Price, @Id_Guitar)
 
+		SELECT Id_Guitar FROM Products WHERE Id_Products = SCOPE_IDENTITY()
+
 	END
 END

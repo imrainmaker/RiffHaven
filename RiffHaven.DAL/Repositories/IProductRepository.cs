@@ -9,12 +9,12 @@ namespace RiffHaven.DAL.Repositories
 {
     public interface IProductRepository
     {
-        public void AddProduct(Products product);
-        public GuitarParts GetParts();
+        public int AddProduct(Products product);
+        public GuitarParts? GetParts();
         public List<Products> GetProducts();
-        public Products GetProductById(int id);
-        public bool DeleteProduct(int id);
-        public Products UpdateProduct(int id, Products productToUpdate);
-        public Products UpdateGuitar(int id, Products GuitarToUpdate);
+        public Products? GetProductById(int id);
+        public int DeleteProduct(int id);
+        public Products? UpdateProduct(int id, Products productToUpdate);
+        public Products? UpdateGuitar(int id, Products GuitarToUpdate);
     }
 }
