@@ -78,5 +78,28 @@ namespace RiffHaven.API.Controllers
             Products? productUpdated = _service.UpdateGuitar(id, product);
             return product is not null ? Ok(productUpdated) : BadRequest();
         }
+
+        [HttpPost("Upload")]
+        public IActionResult UploadImage()
+        {
+            HttpRequest req = HttpContext.Request;
+            if (req is not null)
+            {
+                foreach (var file in req.Form.Files)
+                {
+                    string fileName = file.FileName;
+                    if (!Directory.Exists("upload")) Directory.CreateDirectory("upload");
+
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "upload/", fileName);
+
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        file.CopyTo(fs);
+                    }
+                }
+                return Ok();
+            }
+            return BadRequest();
+        }
     }
 }
