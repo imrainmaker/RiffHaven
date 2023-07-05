@@ -12,6 +12,7 @@ namespace RiffHaven.BLL.Interfaces
         public bool DeleteProduct(int id);
         public Products? UpdateProduct(int id, UpdateProductDTO product);
         public Products? UpdateGuitar(int id, UpdateGuitarDTO product);
+        public List<Products> Filter(ProductFilterDTO filters);
 
     }
 }

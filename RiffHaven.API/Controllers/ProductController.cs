@@ -101,5 +101,12 @@ namespace RiffHaven.API.Controllers
             }
             return BadRequest();
         }
+
+        [HttpPost("Filter")]
+        public IActionResult Filter(ProductFilterDTO filters) 
+        {
+            List<Products> products = _service.Filter(filters);
+            return Ok(products);
+        }
     }
 }

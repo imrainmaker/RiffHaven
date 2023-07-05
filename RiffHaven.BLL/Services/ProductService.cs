@@ -107,5 +107,49 @@ namespace RiffHaven.BLL.Services
 
             return null;
         }
+        public List<Products> Filter(ProductFilterDTO filters)
+        {
+            List<Products> products = _service.GetProducts();
+
+            if (filters.price is not null)
+                products = products.Where(p => p.Price <= filters.price).ToList();
+
+            if (filters.Brand is not null)
+                products = products.Where(b => b.Brand == filters.Brand).ToList();
+
+            if (filters.Style is not null)
+                products = products.Where(s => s.Style == filters.Style).ToList();
+
+            if (filters.Color is not null)
+                products = products.Where(c => c.Color == filters.Color).ToList();
+
+            if (filters.Pickup is not null)
+                products = products.Where(pu => pu.Pickup == filters.Pickup).ToList();
+
+            if (filters.Scale is not null)
+                products = products.Where(sc => sc.Scale == filters.Scale).ToList();
+
+            if (filters.Frets is not null)
+                products = products.Where(f => f.Frets == filters.Frets).ToList();
+
+            if (filters.Tremolo is not null)
+                products = products.Where(t => t.Tremolo == filters.Tremolo).ToList();
+
+            if (filters.BodyWood is not null)
+                products = products.Where(bw => bw.BodyWood == filters.BodyWood).ToList();
+
+            if (filters.NeckWood is not null)
+                products = products.Where(nw => nw.NeckWood == filters.NeckWood).ToList();
+
+            if (filters.TopWood is not null)
+                products = products.Where(tw => tw.TopWood == filters.TopWood).ToList();
+
+            if (filters.FretboardWood is not null)
+                products = products.Where(fw => fw.FretboardWood == filters.FretboardWood).ToList();
+
+            return products;
+        }
+
     }
+
 }
