@@ -19,11 +19,14 @@ namespace RiffHaven.BLL.Services
             _service = service;
         }
 
-        public bool AddProduct(Products product)
+        public int? AddProduct(Products product)
         {
             int? idGuitar = _service.AddProduct(product);
-            Directory.CreateDirectory($@"..\..\RiffHavenAngular\src\assets\Guitars\Guitar{idGuitar}");
-            return idGuitar is not null ? true : false;
+            if (idGuitar is not null )
+            {
+                Directory.CreateDirectory($@"..\..\RiffHavenAngular\src\assets\Guitars\Guitar{idGuitar}");
+            }
+            return idGuitar;
         }
 
         public bool DeleteProduct(int id)

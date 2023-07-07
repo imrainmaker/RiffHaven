@@ -24,8 +24,8 @@ namespace RiffHaven.API.Controllers
             {
                 return BadRequest();
             }
-            _service.AddProduct(product.ToProduct());
-            return Ok();
+            int? guitarId = _service.AddProduct(product.ToProduct());
+            return Ok(guitarId);
         }
 
         [HttpGet("Detail")]
@@ -79,18 +79,17 @@ namespace RiffHaven.API.Controllers
             return product is not null ? Ok(productUpdated) : BadRequest();
         }
 
-        [HttpPost("Upload")]
-        public IActionResult UploadImage()
+        [HttpPost("Upload/{id}")]
+        public IActionResult UploadImage(int id, List<IFormFile> files)
         {
-            HttpRequest req = HttpContext.Request;
-            if (req is not null)
+            string folderPath = $@"..\..\RiffHavenAngular\src\assets\Guitars\Guitar{id}\";
+            if (files is not null)
             {
-                foreach (var file in req.Form.Files)
+                foreach (var file in files)
                 {
                     string fileName = file.FileName;
-                    if (!Directory.Exists("upload")) Directory.CreateDirectory("upload");
 
-                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "upload/", fileName);
+                    string filePath = Path.Combine(folderPath, fileName);
 
                     using (FileStream fs = new FileStream(filePath, FileMode.Create))
                     {

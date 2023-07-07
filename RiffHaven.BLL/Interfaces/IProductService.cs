@@ -5,7 +5,7 @@ namespace RiffHaven.BLL.Interfaces
 {
     public interface IProductService
     {
-        public bool AddProduct(Products product);
+        public int? AddProduct(Products product);
         public GuitarParts? GetParts();
         public List<Products> GetProducts();
         public Products? GetProductById(int id);
