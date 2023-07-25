@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE AddGuitar
+﻿CREATE PROCEDURE [dbo].[AddGuitar]
 	@Model VARCHAR (254),
 	@Description VARCHAR (254),
 	@Stock INT,
@@ -16,6 +16,7 @@
 	@FretboardWood VARCHAR (50)
 AS
 BEGIN
+	DECLARE @Id_Product Int
 	DECLARE @Id_Guitar INT
 	DECLARE @Id_Tremolo INT
 	DECLARE @Id_Pickup INT
@@ -186,7 +187,7 @@ BEGIN
 		INSERT INTO Products (Model, Description, Stock, Price, Id_Guitar)
 		VALUES (@Model, @Description, @Stock, @Price, @Id_Guitar)
 
-		SELECT Id_Guitar FROM Products WHERE Id_Products = SCOPE_IDENTITY()
+		SELECT @Id_Guitar FROM Products WHERE Id_Products = SCOPE_IDENTITY()
 
 	END
 END

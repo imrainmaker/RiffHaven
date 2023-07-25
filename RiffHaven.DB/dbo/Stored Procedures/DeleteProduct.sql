@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE DeleteProduct
+﻿CREATE PROCEDURE [dbo].[DeleteProduct]
 @id INT
 AS
 BEGIN

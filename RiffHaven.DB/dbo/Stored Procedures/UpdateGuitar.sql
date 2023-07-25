@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE UpdateGuitar
+﻿CREATE PROCEDURE [dbo].[UpdateGuitar]
 	@Id_Guitar INT,
 	@Tremolo VARCHAR (50),
 	@Pickup VARCHAR (50),

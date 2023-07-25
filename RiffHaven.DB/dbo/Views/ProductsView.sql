@@ -1,4 +1,5 @@
-﻿CREATE VIEW ProductsView AS
+﻿
+CREATE VIEW ProductsView AS
 SELECT
     P.Id_Products,
     P.Model,
@@ -16,7 +17,8 @@ SELECT
     WB.wood AS BodyWood,
     WN.wood AS NeckWood,
     WT.wood AS TopWood,
-    WF.wood AS FretboardWood
+    WF.wood AS FretboardWood,
+    G.ImageUrl
 FROM
     Products P
     JOIN Guitar G ON P.Id_Guitar = G.Id_Guitar

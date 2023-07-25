@@ -82,6 +82,7 @@ namespace RiffHaven.API.Controllers
         [HttpPost("Upload/{id}")]
         public IActionResult UploadImage(int id, List<IFormFile> files)
         {
+            bool added = false;
             string folderPath = $@"..\..\RiffHavenAngular\src\assets\Guitars\Guitar{id}\";
             if (files is not null)
             {
@@ -89,12 +90,22 @@ namespace RiffHaven.API.Controllers
                 {
                     string fileName = file.FileName;
 
+                    if(fileName.ToLower() == "preview.jpg" || fileName.ToLower() == "preview.jpeg")
+                    {
+                        _service.AddPreview(id, fileName);
+                        added = true;
+                    }
                     string filePath = Path.Combine(folderPath, fileName);
 
                     using (FileStream fs = new FileStream(filePath, FileMode.Create))
                     {
                         file.CopyTo(fs);
                     }
+                }
+
+                if (!added)
+                {
+                    _service.AddPreview(id, files[0].FileName);
                 }
                 return Ok();
             }

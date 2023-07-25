@@ -29,5 +29,6 @@ namespace RiffHaven.Domain.Entities
         public string NeckWood { get; set; }
         public string TopWood { get; set; }
         public string FretboardWood { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

@@ -231,5 +231,25 @@ namespace RiffHaven.DAL.Services
                 return null;
             }
         }
+
+        public bool AddPreview(int id, string fileName)
+        {
+            var parameters = new { Id = id, FileName = fileName };
+
+
+            try
+            {
+                string sql = "UPDATE GUITAR SET ImageUrl = @FileName WHERE Id_Guitar = @Id";
+                int result = _connection.Execute(sql, parameters);
+
+                return result == 1 ? true : false ;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }

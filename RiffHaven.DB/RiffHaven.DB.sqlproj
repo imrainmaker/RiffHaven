@@ -6,8 +6,8 @@
     <Name>RiffHaven.DB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{d143fce8-2abe-42cf-8b70-d88f91e9f85f}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <ProjectGuid>{c36434f5-d812-4e7f-b77e-9a68ba9f925b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -80,14 +80,14 @@
     <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Tables\Orders.sql" />
     <Build Include="dbo\Tables\OrdersProducts.sql" />
+    <Build Include="dbo\Tables\Images.sql" />
     <Build Include="dbo\Views\UsersView.sql" />
-    <Build Include="dbo\Views\ProductsView.sql" />
     <Build Include="dbo\Views\OrdersView.sql" />
+    <Build Include="dbo\Views\ProductsView.sql" />
     <Build Include="dbo\Stored Procedures\Connexion.sql" />
     <Build Include="dbo\Stored Procedures\NewUser.sql" />
     <Build Include="dbo\Stored Procedures\AddGuitar.sql" />
     <Build Include="dbo\Stored Procedures\DeleteProduct.sql" />
     <Build Include="dbo\Stored Procedures\UpdateGuitar.sql" />
-    <Build Include="dbo\Tables\Images.sql" />
   </ItemGroup>
 </Project>
