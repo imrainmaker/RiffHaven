@@ -103,7 +103,7 @@ namespace RiffHaven.DAL.Services
             try
             {
                 var parameters = new { Mail = loginDTO.Email, Passwd = loginDTO.Password };
-                string sql = "EXEC Connexion @Mail @Passwd";
+                string sql = "EXEC Connexion @Mail, @Passwd";
                 return _connection.QueryFirst<Users>(sql, parameters);
             }
             catch(Exception ex)
