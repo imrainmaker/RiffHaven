@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RiffHaven.Domain.Dtos
+namespace RiffHaven.Domain.Dtos.ProductDTO
 {
     public class UpdateProductDTO
     {

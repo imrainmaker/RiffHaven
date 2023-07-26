@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiffHaven.Domain.Dtos
+namespace RiffHaven.Domain.Dtos.ProductDTO
 {
     public class ProductFilterDTO
     {

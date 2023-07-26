@@ -1,4 +1,4 @@
-﻿using RiffHaven.Domain.Dtos;
+﻿using RiffHaven.Domain.Dtos.ProductDTO;
 using RiffHaven.Domain.Entities;
 
 namespace RiffHaven.BLL.Interfaces

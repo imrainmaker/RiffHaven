@@ -1,6 +1,6 @@
 ﻿using RiffHaven.BLL.Interfaces;
 using RiffHaven.DAL.Repositories;
-using RiffHaven.Domain.Dtos;
+using RiffHaven.Domain.Dtos.ProductDTO;
 using RiffHaven.Domain.Entities;
 using System;
 using System.Collections.Generic;
