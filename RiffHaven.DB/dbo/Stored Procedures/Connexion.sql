@@ -6,7 +6,7 @@ AS
 BEGIN
     DECLARE @Pepper NVARCHAR(128) = '%0Pepper0%'
 
-    SELECT Id_Users , LastName , FirstName, Email
+    SELECT *
     FROM Users
     WHERE Email = @mail AND pwd = HASHBYTES('SHA2_512', Salt + @passwd + @Pepper);
 END

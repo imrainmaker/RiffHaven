@@ -107,13 +107,13 @@ namespace RiffHaven.API.Controllers
             return BadRequest();
         }
 
-        [HttpPatch("Phone/{id}")]
-        public ActionResult<bool> UpdatePhone(int id, UpdatePhoneDTO updatePhoneDTO)
+        [HttpPut("Profile/{id}")]
+        public ActionResult<bool> UpdatePhone(int id, UpdateProfileDTO updateProfileDTO)
         {
 
             if (ModelState.IsValid)
             {
-                bool result = _service.UpdatePhone(id, updatePhoneDTO);
+                bool result = _service.UpdatePhone(id, updateProfileDTO);
                 return result ? Ok() : BadRequest();
             }
 

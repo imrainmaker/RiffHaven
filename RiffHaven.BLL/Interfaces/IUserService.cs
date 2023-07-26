@@ -17,7 +17,7 @@ namespace RiffHaven.BLL.Interfaces
         public string Login(LoginDTO loginDTO);
         public bool UpdateAdress(int id, UpdateAdressDTO updateAdressDTO);
         public bool UpdatePwd(int id, UpdatePwdDTO updatePwdDTO);
-        public bool UpdatePhone(int id, UpdatePhoneDTO updatePhoneDTO);
+        public bool UpdatePhone(int id, UpdateProfileDTO updateProfileDTO);
         public bool UpdateRole(int id, UpdateRoleDTO updateRoleDTO);
         public bool DeleteUser(int id);
     }

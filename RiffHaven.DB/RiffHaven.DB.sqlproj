@@ -90,5 +90,6 @@
     <Build Include="dbo\Stored Procedures\DeleteProduct.sql" />
     <Build Include="dbo\Stored Procedures\UpdateGuitar.sql" />
     <Build Include="dbo\Stored Procedures\UpdateAddress.sql" />
+    <Build Include="dbo\Stored Procedures\UpdatePasswd.sql" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 ﻿using RiffHaven.API.Dtos;
 using RiffHaven.Domain.Entities;
 
-
 namespace RiffHaven.API.Mappers
 {
     public static class ProductMapper

@@ -104,7 +104,7 @@ namespace RiffHaven.DAL.Services
             {
                 var parameters = new { Mail = loginDTO.Email, Passwd = loginDTO.Password };
                 string sql = "EXEC Connexion @Mail @Passwd";
-                return _connection.QueryFirst(sql, parameters);
+                return _connection.QueryFirst<Users>(sql, parameters);
             }
             catch(Exception ex)
             {
@@ -121,19 +121,27 @@ namespace RiffHaven.DAL.Services
 
         }
 
-        public bool UpdatePhone(int id, UpdatePhoneDTO updatePhoneDTO)
+        public bool UpdatePhone(int id, UpdateProfileDTO updateProfileDTO)
         {
-            throw new NotImplementedException();
+            var parameters = new { Id = id, LastName = updateProfileDTO.LastName, FirstName = updateProfileDTO.FirstName, Email = updateProfileDTO.Email, Phone = updateProfileDTO.Phone };
+            string sql = "UPDATE Users SET LastName = @LastName, FirstName = @FirstName, Email = @Email, Phone = @Phone WHERE Id_Users = @Id";
+            int result = _connection.Execute(sql, parameters);
+            return result > 0;
         }
 
         public bool UpdatePwd(int id, UpdatePwdDTO updatePwdDTO)
         {
-            throw new NotImplementedException();
+            var parameters = new { Id = id, ActualPasswd = updatePwdDTO.Password, NewPasswd = updatePwdDTO.NewPassword};
+            int result = _connection.Execute("UpdatePasswd", parameters, commandType: CommandType.StoredProcedure);
+            return result > 0;
         }
 
         public bool UpdateRole(int id, UpdateRoleDTO updateRoleDTO)
         {
-            throw new NotImplementedException();
+            var parameters = new { Id = id, Role = updateRoleDTO.Role };
+            string sql = "UPDATE Users SET Role = @Role WHERE Id_Users = @Id";
+            int result = _connection.Execute(sql, parameters);
+            return result > 0;
         }
     }
 }

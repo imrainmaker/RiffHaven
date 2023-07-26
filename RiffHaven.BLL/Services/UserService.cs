@@ -49,7 +49,7 @@ namespace RiffHaven.BLL.Services
         public string Login(LoginDTO loginDTO)
         {
             
-            Users? user = _service.GetByEmail(loginDTO.Email);
+            Users? user = _service.Login(loginDTO);
             if (user is not null)
             {
                 return _jwtService.GenerateToken(user);
@@ -68,9 +68,9 @@ namespace RiffHaven.BLL.Services
             return _service.UpdatePwd(id, updatePwdDTO);
         }
 
-        public bool UpdatePhone(int id, UpdatePhoneDTO updatePhoneDTO)
+        public bool UpdatePhone(int id, UpdateProfileDTO updateProfileDTO)
         {
-            return _service.UpdatePhone(id, updatePhoneDTO);
+            return _service.UpdatePhone(id, updateProfileDTO);
         }
 
         public bool UpdateRole(int id, UpdateRoleDTO updateRoleDTO)
