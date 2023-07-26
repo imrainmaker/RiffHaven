@@ -21,7 +21,7 @@ namespace RiffHaven.Domain.Dtos.UserDTO
         public string? Box { get; set; }
 
         [Required]
-        public string Zip { get; set; }
+        public int Zip { get; set; }
 
         [Required]
         [MaxLength(100)]

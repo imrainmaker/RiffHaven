@@ -28,7 +28,7 @@ namespace RiffHaven.DAL.Services
                 var parameters = new {Mail = userDTO.Email, Nom = userDTO.LastName, Prenom = userDTO.FirstName, Passwd = userDTO.Password};
                 string sql = "EXEC  NewUser @Mail, @Nom, @Prenom, @Passwd";
                 int result = _connection.Execute(sql, parameters);
-                return result == 1 ? true : false;
+                return result == 1;
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace RiffHaven.DAL.Services
                 var parameters = new { Id = id };
                 string sql = "DELETE FROM Users WHERE Id_Users = @Id";
                 int result = _connection.Execute(sql, parameters);
-                return result == 1 ? true : false;
+                return result == 1;
             }
             catch (Exception ex)
             {
@@ -100,12 +100,25 @@ namespace RiffHaven.DAL.Services
 
         public Users? Login(LoginDTO loginDTO)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var parameters = new { Mail = loginDTO.Email, Passwd = loginDTO.Password };
+                string sql = "EXEC Connexion @Mail @Passwd";
+                return _connection.QueryFirst(sql, parameters);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
         public bool UpdateAdress(int id, UpdateAdressDTO updateAdressDTO)
         {
-            throw new NotImplementedException();
+            var parameters = new {Id = id, Street = updateAdressDTO.Street, Number = updateAdressDTO.Number, Box = updateAdressDTO.Box, Zip = updateAdressDTO.Zip, City = updateAdressDTO.City};
+            int result = _connection.Execute("UpdateAddress", parameters, commandType: CommandType.StoredProcedure);
+            return result > 0;
+
         }
 
         public bool UpdatePhone(int id, UpdatePhoneDTO updatePhoneDTO)
