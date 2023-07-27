@@ -16,6 +16,6 @@ namespace RiffHaven.DAL.Repositories
         public int DeleteProduct(int id);
         public Products? UpdateProduct(int id, Products productToUpdate);
         public Products? UpdateGuitar(int id, Products GuitarToUpdate);
-        public bool AddPreview(int id, string fileName);
+        public string? AddPreview(int id, string fileName);
     }
 }

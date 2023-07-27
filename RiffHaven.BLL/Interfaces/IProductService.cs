@@ -13,7 +13,7 @@ namespace RiffHaven.BLL.Interfaces
         public Products? UpdateProduct(int id, UpdateProductDTO product);
         public Products? UpdateGuitar(int id, UpdateGuitarDTO product);
         public List<Products> Filter(ProductFilterDTO filters);
-        public bool AddPreview(int id, string fileName);
+        public string? AddPreview(int id, string fileName);
         
 
     }

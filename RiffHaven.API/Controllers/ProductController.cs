@@ -80,9 +80,10 @@ namespace RiffHaven.API.Controllers
         }
 
         [HttpPost("Upload/{id}")]
-        public IActionResult UploadImage(int id, List<IFormFile> files)
+        public ActionResult<string?> UploadImage(int id, List<IFormFile> files)
         {
             bool added = false;
+            string? url = null;
             string folderPath = $@"..\..\RiffHavenAngular\src\assets\Guitars\Guitar{id}\";
             if (files is not null)
             {
@@ -92,7 +93,7 @@ namespace RiffHaven.API.Controllers
 
                     if(fileName.ToLower() == "preview.jpg" || fileName.ToLower() == "preview.jpeg")
                     {
-                        _service.AddPreview(id, fileName);
+                        url = _service.AddPreview(id, fileName);
                         added = true;
                     }
                     string filePath = Path.Combine(folderPath, fileName);
@@ -105,9 +106,10 @@ namespace RiffHaven.API.Controllers
 
                 if (!added)
                 {
-                    _service.AddPreview(id, files[0].FileName);
+                    url = _service.AddPreview(id, files[0].FileName);
+                    
                 }
-                return Ok();
+                return Ok(url);
             }
             return BadRequest();
         }

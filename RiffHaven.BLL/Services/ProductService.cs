@@ -153,7 +153,7 @@ namespace RiffHaven.BLL.Services
             return products;
         }
 
-        public bool AddPreview(int id, string fileName)
+        public string? AddPreview(int id, string fileName)
         {
             fileName = $"assets/Guitars/Guitar{id}/{fileName}";
             return _service.AddPreview(id, fileName);
